@@ -1,4 +1,20 @@
+import { nanoid } from "nanoid";
+import { useState } from "react";
+
 const App = () => {
+
+    const [tasks,setTasks] = useState([]);
+
+    const [title,setTitle] = useState("")
+
+    const submitHandler = (e) =>{
+        e.preventDefault();
+        const newToDo = {id : nanoid(),title,completed : false}
+        setTasks([...tasks,newToDo]);
+    }
+
+    console.log(tasks);
+
     return (
         <div className="overflow-x-hidden border-t-2 w-screen min-h-[100vh] bg-zinc-800 flex  items-center flex-col">
             <div className="mt-[7%] w-[35%] h-[30vh] border rounded-3xl flex justify-around items-center">
@@ -11,8 +27,9 @@ const App = () => {
                 </div>
             </div>
             {/*  */}
-            <form className="w-[35%] flex justify-between px-5 my-[2%]">
+            <form onSubmit={submitHandler} className="w-[35%] flex justify-between px-5 my-[2%]">
                 <input
+                    onChange={(e) => setTitle(e.target.value)}
                     placeholder="write your next task..."
                     className="px-5 py-2 text-yellow-100 outline-none w-[80%] rounded-xl bg-zinc-700 "
                     type="text"

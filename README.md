@@ -1,8 +1,8 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Cloned UI
+install nanoid as : *npm i nanoid*
+make useState[title,setTitle] and applied on change om input tag
+<!-- log and check title working or not -->
+apply on submit on the form and pass the refrence of function submitHandler function.
+make a tasks array using useState.
+make submitHandler function and inside it make store the data in a varibale, and then deepClone the existing tasks array and in setTasks add that varibale holding new task.
+<!-- log and check tasks array getting updated or not -->
