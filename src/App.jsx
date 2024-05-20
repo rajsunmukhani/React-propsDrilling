@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const App = () => {
 
-    const [tasks,setTasks] = useState([]);
+    const [tasks,setTasks] = useState(JSON.parse(localStorage.getItem("toDoTasks")) || []);
 
     const [title,setTitle] = useState("")
 
@@ -11,6 +11,8 @@ const App = () => {
         e.preventDefault();
         const newToDo = {id : nanoid(),title,completed : false}
         setTasks([...tasks,newToDo]);
+        setTitle("");
+        localStorage.setItem("toDoTasks",JSON.stringify([...tasks,newToDo]))
     }
 
     console.log(tasks);
@@ -23,13 +25,14 @@ const App = () => {
                     <p>Keeps doing things</p>
                 </div>
                 <div className="text-3xl font-extrabold flex justify-center items-center w-[10vmax] h-[10vmax] rounded-full bg-orange-600">
-                    0/0
+                    0/{tasks.length}
                 </div>
             </div>
             {/*  */}
             <form onSubmit={submitHandler} className="w-[35%] flex justify-between px-5 my-[2%]">
                 <input
                     onChange={(e) => setTitle(e.target.value)}
+                    value={title}
                     placeholder="write your next task..."
                     className="px-5 py-2 text-yellow-100 outline-none w-[80%] rounded-xl bg-zinc-700 "
                     type="text"
